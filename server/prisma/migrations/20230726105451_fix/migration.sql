@@ -1,7 +1,7 @@
 /*
   Warnings:
 
-  - You are about to drop the column `labelId` on the `Product` table. All the data in the column will be lost.
+  - You are about to drop the column `productId` on the `Label` table. All the data in the column will be lost.
 
 */
 -- CreateTable
@@ -14,16 +14,13 @@ CREATE TABLE "_LabelToProduct" (
 
 -- RedefineTables
 PRAGMA foreign_keys=OFF;
-CREATE TABLE "new_Product" (
+CREATE TABLE "new_Label" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "cost" REAL,
-    "work_time" INTEGER,
-    "speed" REAL,
-    "horsepower" REAL
+    "title" TEXT NOT NULL
 );
-INSERT INTO "new_Product" ("cost", "horsepower", "id", "speed", "work_time") SELECT "cost", "horsepower", "id", "speed", "work_time" FROM "Product";
-DROP TABLE "Product";
-ALTER TABLE "new_Product" RENAME TO "Product";
+INSERT INTO "new_Label" ("id", "title") SELECT "id", "title" FROM "Label";
+DROP TABLE "Label";
+ALTER TABLE "new_Label" RENAME TO "Label";
 PRAGMA foreign_key_check;
 PRAGMA foreign_keys=ON;
 

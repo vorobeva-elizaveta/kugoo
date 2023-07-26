@@ -18,7 +18,26 @@ class LabelController {
       return res.send(result)
     }
 
-    return next(ApiError.badRequest('Такой лейбл уже существует!'))
+    return res.status(500).json({ message: 'Лейбл уже создан' })
+  }
+
+  async findLabelById(req, res, next) {
+    const client = new PrismaClient()
+    let { id } = req.body
+    let result = await client.label.findFirst({
+      where: { id }
+    })
+    if (result != null) return res.send(result)
+    return res.status(404).json({ message: 'Лейбл не найден' })
+  }
+  async findLabelByName(req, res, next) {
+    const client = new PrismaClient()
+    let { title } = req.body
+    let result = await client.label.findFirst({
+      where: { title }
+    })
+    if (result != null) return res.send(result)
+    return res.status(404).json({ message: 'Лейбл не найден' })
   }
 }
 

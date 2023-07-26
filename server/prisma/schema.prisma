@@ -12,22 +12,28 @@ datasource db {
 
 model User {
   id       Int     @id @default(autoincrement())
-  email    String?
+  email    String? @unique
   login    String  @unique
   password String
+  role     String
 }
 
 model Product {
-  id         Int     @id @default(autoincrement())
-  cost       Float?
-  work_time  Int?
-  speed      Float?
-  horsepower Float?
-  label      Label[]
+  id             Int     @id @default(autoincrement())
+  title          String?
+  work_time      Int?
+  cost           Float?
+  speed          Float?
+  horsepower     Float?
+  accumulator    Float?
+  article_number Int?
+  views          Int?
+  bought         Int?
+  labels         Label[]
 }
 
 model Label {
-  id      Int       @id @default(autoincrement())
-  title   String
-  product Product[]
+  id       Int       @id @default(autoincrement())
+  title    String
+  products Product[]
 }
