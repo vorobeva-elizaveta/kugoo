@@ -13,9 +13,9 @@ datasource db {
 model User {
   id       Int     @id @default(autoincrement())
   email    String? @unique
-  login    String  @unique
   password String
   role     String
+  Token    Token?
 }
 
 model Product {
@@ -36,4 +36,10 @@ model Label {
   id       Int       @id @default(autoincrement())
   title    String
   products Product[]
+}
+
+model Token {
+  user         User   @relation(fields: [userId], references: [id])
+  userId       Int    @unique
+  refreshToken String
 }

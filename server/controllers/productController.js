@@ -1,9 +1,8 @@
 import { PrismaClient } from '@prisma/client'
-import LabelController from './labelController.js'
+import productModel from '../models/product-model.js'
 class ProductController {
   async getAllProducts(req, res) {
-    const client = new PrismaClient()
-    const result = await client.product
+    const result = await productModel
       .findMany({
         include: {
           labels: true
@@ -14,11 +13,10 @@ class ProductController {
   }
 
   async createProduct(req, res) {
-    const client = new PrismaClient()
     let { cost, speed, work_time, horsepower, label_id } = req.body
     let label = await client.label.findFirst({ where: { id: label_id } })
     if (label != null) {
-      let result = await client.product.create({
+      let result = await productModel.create({
         data: {
           cost,
           work_time,
@@ -36,9 +34,8 @@ class ProductController {
   }
 
   async updateProductById(req, res) {
-    const client = new PrismaClient()
     let { id, cost, speed, work_time, horsepower, label_id } = req.body
-    let result = await client.product.update({
+    let result = await productModel.update({
       where: { id },
       data: { cost, speed, work_time, horsepower, labels: { connect: [{ id: label_id }] } }
     })
