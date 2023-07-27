@@ -5,6 +5,14 @@ import tokenService from './token-service.js'
 import UserDto from '../dtos/user-dto.js'
 
 class UserService {
+  async getUserData(userId) {
+    let user = await userModel.findFirst({ where: { id: userId } })
+    if (!user) {
+      throw ApiError.badRequest('Пользователь с таким id не найден')
+    }
+    const userDto = new UserDto(user)
+    return { ...userDto }
+  }
   async registration(email, password, role) {
     let candidate = await userModel.findFirst({ where: { email } })
     if (candidate) {

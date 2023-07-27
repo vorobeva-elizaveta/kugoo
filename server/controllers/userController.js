@@ -1,13 +1,13 @@
 import userService from '../service/user-service.js'
-import userModel from '../models/user-model.js'
 class UserController {
-  async getUserInfo(req, res) {
-    let { id } = req.body
-    let user = await userModel.findFirst({
-      where: {
-        id
-      }
-    })
+  async getUserInfo(req, res, next) {
+    try {
+      let { userId } = req.body
+      let user = await userService.getUserData(userId)
+      res.send(user)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async registration(req, res, next) {
@@ -16,7 +16,6 @@ class UserController {
       let user = await userService.registration(email, password, role).then((data) => data)
       res.send(user)
     } catch (error) {
-      // res.status(error.status).json(error)
       next(error)
     }
   }
