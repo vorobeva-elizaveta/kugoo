@@ -5,6 +5,7 @@ class UserDto {
   constructor(options) {
     this.email = options.email
     this.id = options.id
+    this.role = options.role
   }
 }
 

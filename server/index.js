@@ -3,8 +3,9 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import router from './routes/index.js'
 import cors from 'cors'
-import ErrorHandingMiddleware from './middlewares/ErrorHandingMiddleware.js'
+import ErrorHandingMiddleware from './middlewares/error-handing-middleware.js'
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -19,6 +20,7 @@ app.use(
   })
 )
 app.use(bodyParser.json())
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'static')))
 
