@@ -18,14 +18,25 @@ const useAuthAxios = axios.create({
   withCredentials: true
 })
 
+const axiosInterceptor = (response) => {
+  return response.data
+}
+const axiosErrorInterceptor = (response) => {
+  return response.data
+}
+
 const authAxiosInterceptor = (response) => {
   return response.data
 }
 const authAxiosErrorInterceptor = (error) => {
+  const { type, message } = error
+  if (type === 'TOKEN_NOT_VALID') {
+    throw { message }
+  }
   throw error
 }
 
-useAxios.interceptors.response.use(authAxiosInterceptor, authAxiosErrorInterceptor)
+useAxios.interceptors.response.use(axiosInterceptor, axiosErrorInterceptor)
 useAuthAxios.interceptors.response.use(authAxiosInterceptor, authAxiosErrorInterceptor)
 
 export { useAxios, useAuthAxios }

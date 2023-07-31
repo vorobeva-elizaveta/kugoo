@@ -11,13 +11,22 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const app = express(),
-  PORT = process.env.PORT || 5000
+  PORT = process.env.PORT || 5000,
+  whitelist = ['http://localhost:4000']
 
 app.use(
   cors({
-    credentials: true
+    credentials: true,
+    origin: function (origin, callback) {
+      callback(null, true)
+      // if (whitelist.indexOf(origin) !== -1) {
+      // } else {
+      //   callback(new Error('Not allowed by CORS'))
+      // }
+    }
   })
 )
+
 app.use(
   bodyParser.urlencoded({
     extended: true

@@ -1,6 +1,7 @@
 <script setup>
-import { login } from '@/shared/API/authorization.js'
+import { login, getAllProducts } from '@/shared/API/index.js'
 login('vliza162@gmail.com', 'Malishka2004_')
+getAllProducts()
 </script>
 
 <template>

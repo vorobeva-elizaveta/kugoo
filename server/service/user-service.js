@@ -73,7 +73,10 @@ class UserService {
     }
     const userData = TokenService.validateRefreshToken(token)
     const tokenFromDb = await TokenService.findToken(token)
-    if (!userData || !tokenFromDb) {
+    if (!userData) {
+      throw ApiError.badRequest('Токен не валиден', 'TOKEN_NOT_VALID')
+    }
+    if (!tokenFromDb) {
       throw ApiError.unauthorized()
     }
     const user = await userModel.findFirst({ where: { id: userData.id } })

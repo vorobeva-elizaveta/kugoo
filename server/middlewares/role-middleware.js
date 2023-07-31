@@ -14,14 +14,12 @@ export default (role) => {
       }
 
       const userData = await tokenService.validateAccessToken(accessToken)
-      console.log(userData)
       if (!userData) {
         return next(ApiError.unauthorized())
       }
-      if (userData.role !== role) {
+      if (userData.role != role) {
         return res.status(403).send({ message: 'У вас нет доступа' })
       }
-      req.user = userData
       next()
     } catch (error) {
       return next(ApiError.unauthorized())

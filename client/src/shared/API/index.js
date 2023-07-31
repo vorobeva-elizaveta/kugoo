@@ -1,7 +1,4 @@
-import { registration, login, refreshToken } from './authorization'
+import { registration, login, logout, refreshToken } from './authorization'
+import { getAllProducts } from './products'
 
-export default {
-  registration,
-  login,
-  refreshToken
-}
+export { registration, login, logout, refreshToken, getAllProducts }
