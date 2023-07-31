@@ -13,7 +13,11 @@ const __dirname = path.dirname(__filename)
 const app = express(),
   PORT = process.env.PORT || 5000
 
-app.use(cors())
+app.use(
+  cors({
+    credentials: true
+  })
+)
 app.use(
   bodyParser.urlencoded({
     extended: true

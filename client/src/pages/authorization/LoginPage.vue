@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+import { login } from '@/shared/API/authorization.js'
+login('vliza162@gmail.com', 'Malishka2004_')
+</script>
 
 <template>
   <div></div>
