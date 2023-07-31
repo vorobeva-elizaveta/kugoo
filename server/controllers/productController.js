@@ -1,6 +1,6 @@
 import LabelModel from '../models/label-model.js'
 import ProductModel from '../models/product-model.js'
-import ApiError from '../errors/ApiError.js'
+import ProductService from '../service/product-service.js'
 class ProductController {
   async getAllProducts(req, res) {
     const result = await ProductModel.findMany({
@@ -14,22 +14,15 @@ class ProductController {
 
   async createProduct(req, res, next) {
     try {
-      let { cost, speed, work_time, horsepower, label_id } = req.body
-      let label = await LabelModel.findFirst({ where: { id: label_id } })
-      console.log(label)
-      let result = await ProductModel.create({
-        data: {
-          cost,
-          work_time,
-          speed,
-          horsepower,
-          labels: { connect: label != null ? [{ id: label_id }] : [] }
-        },
-        include: {
-          labels: true
-        }
-      })
-      return res.send(result)
+      let { cost, work_time, speed, horsepower, labels } = req.body
+      const response = await ProductService.createProduct(
+        cost,
+        work_time,
+        speed,
+        horsepower,
+        labels
+      )
+      return res.send(response)
     } catch (error) {
       console.log(error)
       next()
