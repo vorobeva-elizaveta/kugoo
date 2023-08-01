@@ -1,1 +1,25 @@
-$white: #fff
+//Preset colors
+$white: #fff;
+$black: #000;
+$primary: #6F73EE;
+$primary-light: #8185F9;
+$secondary: #F3A712;
+$secondary-light: #FAB836;
+$red: #EE685F;
+$green: #75D14A;
+$gray-100: #F4F7FB;
+
+*{
+    font-family: Jost;
+    box-sizing: border-box;
+
+    //убрать потом
+    margin: 2px;
+}
+//убрать потом
+body{
+    background: rgb(221, 221, 221);
+}
+
+
+

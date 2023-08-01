@@ -17,7 +17,7 @@ export default [
     component: RegistrationPage
   },
   {
-    path: '/*',
+    path: '/:pathMatch(.*)*',
     name: 'not-found',
     component: NotFoundPage
   }
