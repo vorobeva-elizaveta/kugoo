@@ -1,4 +1,4 @@
-import LoginPage from '@/pages/authorization/LoginPage.vue'
-import RegistrationPage from '@/pages/authorization/RegistrationPage.vue'
+import LoginPage from './LoginPage.vue'
+import RegistrationPage from './RegistrationPage.vue'
 
 export { LoginPage, RegistrationPage }

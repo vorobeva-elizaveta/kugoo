@@ -1,10 +1,10 @@
-import { NotFoundPage, LoginPage, RegistrationPage } from '@/pages/index.js'
+import { NotFoundPage, LoginPage, RegistrationPage, MainUserPage } from '../../pages/index.js'
 
 export default [
   {
     path: '/',
     name: 'home',
-    component: NotFoundPage
+    component: MainUserPage
   },
   {
     path: '/login',

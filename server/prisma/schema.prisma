@@ -30,6 +30,14 @@ model Product {
   views          Int?
   bought         Int?
   labels         Label[]
+  images         Image[]
+}
+
+model Image {
+  id       Int       @id @default(autoincrement())
+  image    Bytes
+  name     String
+  products Product[]
 }
 
 model Label {

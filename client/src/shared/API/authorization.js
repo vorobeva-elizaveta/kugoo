@@ -1,5 +1,5 @@
 import { useAxios, useAuthAxios } from '@/app/libs/axios/index.js'
-import router from '@/router/index'
+import router from '@/app/router/index'
 
 const registration = async (email, password) => {
   return await useAxios.post('/user/registration', { email, password })
