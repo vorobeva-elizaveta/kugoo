@@ -32,7 +32,6 @@
     //   default: 'basic',
     //   required: false
     // }
-
   });
 
   const emit = defineEmits(['click'])
@@ -53,7 +52,7 @@
     @click="clickOnButton"
   >
     <span v-if="icon">
-      <font-awesome-icon style="transform: translate(0, 1.5px); transform: scale(1.2, 1.2)" :icon="`fa-solid fa-${icon}`"></font-awesome-icon>
+      <font-awesome-icon class="icon" :icon="`fa-solid fa-${icon}`"></font-awesome-icon>
     </span>
     <slot v-else/>
   </button>
@@ -133,5 +132,12 @@
       opacity: 0.6;
     }
   }
+}
+
+.icon{
+  transform: translate(0, 1.5px) scale(1.2, 1.2);
+  width: 16px;
+  height: 16px;
+  padding: 2px 3.5px;
 }
 </style>

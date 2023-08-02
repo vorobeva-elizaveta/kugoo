@@ -1,11 +1,22 @@
-<script>
+<script setup>
+  const props = defineProps({
+    type: {
+      sype: String,
+      default: 'primary'
+    }
+  })
 
+  const clickOnSearch = () => {
+    alert('Search has begun')
+  }
 </script>
 
 <template>
   <form>
-    <input type="text" placeholder="Искать здесь...">
-    <button type="submit"></button>
+    <input  :class="['input',  `input_${type}`]"  type="text"   placeholder="Искать здесь...">
+    <button :class="['button', `button_${type}`]" type="submit" @click="clickOnSearch">
+      <font-awesome-icon icon="fa-solid fa-magnifying-glass"/>
+    </button>
   </form>
 </template>
 
@@ -13,34 +24,48 @@
   @import "@/app/styles/variables.scss";
 
 form {
-  position: relative;
-  margin: 0 auto;
+  position: relative; 
 }
-input {
+.input {
   width: 100%;
   height: 40px;
   padding-left: 10px;   
-  border: 2px $primary solid;
   border-radius: 5px;
   outline: none;
-  background: $white;
-  color: $black;
+  &_primary{
+    background: $white;
+    color: $black;
+    border: 2px $primary solid;
+  }
+  &_secondary{
+    background: $sky;
+    color: $white;
+    border: 2px $sky solid;
+    height: 53px;
+  }
+  &_secondary::placeholder{
+    color: $white;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 23px;
+
+  }
 }
-button {
+.button {
+  color: $white;
   position: absolute; 
   top: 0;
   right: -3px;
-  width: 40px;
-  height: 40px;
   border: none;
   background: $primary;
   border-radius: 0 5px 5px 0;   
   cursor: pointer;
-}
-button:before {
-  content: "";
-  font-family: FontAwesome;
-  font-size: 16px;
-  color: #F9F0DA;
+  &_primary{
+    width: 40px;
+    height: 40px;
+  }
+  &_secondary{
+    visibility: collapse;
+  }
 }
 </style>
