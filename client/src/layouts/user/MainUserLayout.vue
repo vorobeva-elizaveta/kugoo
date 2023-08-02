@@ -1,9 +1,11 @@
-<script setup></script>
+<script setup>
+import { MainHeaderComponent } from '@/widgets/index.js'
+</script>
 
 <template>
   <div class="main-user-layout">
     <div class="main-user-layout__container">
-      <!-- TODO здесь будут навигационные шапки -->
+      <main-header-component />
       <slot />
       <!-- TODO здесь будет подвал сайта -->
     </div>

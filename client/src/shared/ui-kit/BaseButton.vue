@@ -19,4 +19,12 @@ defineProps({
   </button>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.base-button {
+  &.primary {
+    @apply bg-purple;
+  }
+  &.secondary {
+  }
+}
+</style>
