@@ -32,6 +32,7 @@ const clickOnButton = () => {
     <div id="test2"><base-search-field/></div>
     <div id="test3">
       <base-search-field type="secondary"/>
+      <base-button color="primary" size="big" :outlined="true" id="test1">Подписаться</base-button>  
     </div>
 
   </div>
@@ -50,7 +51,7 @@ const clickOnButton = () => {
 }
 
 #test3{
-  width: 300px;
+  width: 400px;
 }
 div{
   margin: 4px;
