@@ -1,11 +1,4 @@
 <script setup>
-  const props = defineProps({
-    type: {
-      sype: String,
-      default: 'primary'
-    }
-  })
-
   const clickOnSearch = () => {
     alert('Search has begun')
   }
@@ -13,8 +6,8 @@
 
 <template>
   <form>
-    <input  :class="['input',  `input_${type}`]"  type="text"   placeholder="Искать здесь...">
-    <button :class="['button', `button_${type}`]" type="submit" @click="clickOnSearch">
+    <input  class="input"  type="text"   placeholder="Искать здесь...">
+    <button class="button" type="submit" @click="clickOnSearch">
       <font-awesome-icon icon="fa-solid fa-magnifying-glass"/>
     </button>
   </form>
@@ -32,23 +25,15 @@ form {
   padding-left: 10px;   
   border-radius: 5px;
   outline: none;
-  &_primary{
-    background: $white;
+  background: $white;
+  color: $black;
+  border: 2px $primary solid;
+  
+  &::placeholder{
     color: $black;
-    border: 2px $primary solid;
-  }
-  &_secondary{
-    background: $sky;
-    color: $white;
-    border: 2px $sky solid;
-    height: 53px;
-  }
-  &_secondary::placeholder{
-    color: $white;
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 14px;
+    font-weight: 400;
     line-height: 23px;
-
   }
 }
 .button {
@@ -60,12 +45,7 @@ form {
   background: $primary;
   border-radius: 0 5px 5px 0;   
   cursor: pointer;
-  &_primary{
-    width: 40px;
-    height: 40px;
-  }
-  &_secondary{
-    visibility: collapse;
-  }
+  width: 40px;
+  height: 40px;
 }
 </style>
