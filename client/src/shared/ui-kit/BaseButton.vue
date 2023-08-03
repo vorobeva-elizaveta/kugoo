@@ -19,4 +19,9 @@ defineProps({
   </button>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.base-button {
+  &__container {
+  }
+}
+</style>
