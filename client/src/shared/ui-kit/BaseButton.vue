@@ -37,7 +37,7 @@ defineExpose({ setLoadingStatus })
 
 <style lang="scss">
 .base-button {
-  @apply relative;
+  @apply relative flex items-center gap-2;
 
   & span.hidden {
     @apply opacity-0;
