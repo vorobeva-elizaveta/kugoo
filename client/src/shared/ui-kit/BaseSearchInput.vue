@@ -1,9 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="product-card">
-    
-  </div>
+  <div></div>
 </template>
 
 <style lang="scss" scoped></style>

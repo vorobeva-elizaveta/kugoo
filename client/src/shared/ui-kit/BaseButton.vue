@@ -21,7 +21,10 @@ defineProps({
 
 <style lang="scss">
 .base-button {
-  &__container {
+  &.primary {
+    @apply bg-purple;
+  }
+  &.secondary {
   }
 }
 </style>
