@@ -5,8 +5,10 @@ import authMiddleware from '../middlewares/auth-middleware.js'
 
 const router = new Router()
 
-router.get('/all', authMiddleware, roleMiddleware('admin'), ProductController.getAllProducts)
-router.post('/create', roleMiddleware('admin'), ProductController.createProduct)
-router.post('/update', roleMiddleware('admin'), ProductController.updateProductById)
+router.get('/all', ProductController.getAllProducts)
+router.post('/create', ProductController.createProduct)
+router.post('/update', ProductController.updateProductById)
+router.post('/delete', ProductController.deleteProductById)
+router.post('/delete-many', ProductController.deleteManyProductsByIds)
 
 export default router

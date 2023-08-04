@@ -34,7 +34,10 @@ defineProps({
   <div class="product-card" v-if="product != null">
     <div class="product-card__container">
       <div class="product-card__top-block">
-        <div class="product-card__labels-block">
+        <div
+          class="product-card__labels-block"
+          v-if="product.labels != null && product.labels.length > 0"
+        >
           <span
             class="product-card__label"
             :style="`background-color: ${label.color}`"
@@ -81,7 +84,7 @@ defineProps({
           </div>
         </div>
         <div class="product-card__price-block">
-          <p class="product-card__price-value">{{ product?.cost?.toLocaleString() }} ₽</p>
+          <p class="product-card__price-value">{{ product.cost?.toLocaleString() }} ₽</p>
         </div>
         <base-button>Купить в 1 клик</base-button>
       </div>
@@ -124,7 +127,7 @@ defineProps({
   }
 
   &__title {
-    @apply text-lg font-semibold text-black;
+    @apply text-[18px] font-semibold text-black;
   }
 
   &__specifications {
@@ -138,13 +141,13 @@ defineProps({
       .item__icon {
       }
       .item__value {
-        @apply text-gray-600;
+        @apply text-gray-600 text-[14px];
       }
     }
   }
 
   &__price-value {
-    @apply font-semibold text-xl text-black;
+    @apply font-semibold text-[20px] text-black;
   }
 }
 </style>

@@ -1,41 +1,55 @@
+import ApiError from '../errors/ApiError.js'
 import LabelModel from '../models/label-model.js'
 import ProductModel from '../models/product-model.js'
 import ProductService from '../service/product-service.js'
 class ProductController {
   async getAllProducts(req, res) {
-    const result = await ProductModel.findMany({
-      include: {
-        labels: true
-      }
-    })
-    console.log(result)
-    res.send(result)
+    try {
+      const result = await ProductService.getAllProducts()
+      res.send(result)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async createProduct(req, res, next) {
     try {
-      let { cost, work_time, speed, horsepower, labels } = req.body
-      const response = await ProductService.createProduct(
-        cost,
-        work_time,
-        speed,
-        horsepower,
-        labels
-      )
+      let requestBody = req.body
+      const response = await ProductService.createProduct(requestBody)
       return res.send(response)
     } catch (error) {
-      console.log(error)
-      next()
+      next(error)
     }
   }
 
-  async updateProductById(req, res) {
-    let { id, cost, speed, work_time, horsepower, label_id } = req.body
-    let result = await ProductModel.update({
-      where: { id },
-      data: { cost, speed, work_time, horsepower, labels: { connect: [{ id: label_id }] } }
-    })
-    res.send(result)
+  async updateProductById(req, res, next) {
+    try {
+      const result = await ProductService.updateProduct(req.body)
+      res.send(result)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async deleteProductById(req, res, next) {
+    try {
+      const requestBody = req.body
+      const result = await ProductService.deleteProduct(requestBody)
+      res.send(result)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async deleteManyProductsByIds(req, res, next) {
+    try {
+      const requestBody = req.body
+      const result = await ProductService.deleteManyProducts(requestBody)
+      res.send(result)
+    } catch (error) {
+      console.log(error)
+      next(error)
+    }
   }
 }
 export default new ProductController()

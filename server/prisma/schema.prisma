@@ -41,9 +41,11 @@ model Image {
 }
 
 model Label {
-  id       Int       @id @default(autoincrement())
-  title    String
-  products Product[]
+  id         Int       @id @default(autoincrement())
+  title      String
+  full_title String?
+  color      String?
+  products   Product[]
 }
 
 model Token {

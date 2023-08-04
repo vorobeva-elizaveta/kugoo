@@ -92,11 +92,11 @@ defineExpose({ setLoadingStatus })
   }
 
   &.big {
-    @apply px-[25px] py-[15px] text-lg;
+    @apply px-[25px] py-[15px] text-[16px] leading-[23px];
   }
 
   &.middle {
-    @apply px-[20px] py-[10px] text-base;
+    @apply px-[20px] py-[10px] text-[14px] leading-[17px];
   }
 
   &.small {
