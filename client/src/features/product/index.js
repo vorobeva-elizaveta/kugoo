@@ -1,3 +1,4 @@
 import ProductCard from './ProductCard.vue'
+import ProductImagesSlider from './ProductImagesSlider.vue'
 
-export { ProductCard }
+export { ProductCard, ProductImagesSlider }

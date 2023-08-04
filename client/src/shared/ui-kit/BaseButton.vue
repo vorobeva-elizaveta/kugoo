@@ -27,19 +27,19 @@ defineExpose({ setLoadingStatus })
 <template>
   <button class="base-button" :class="`${type} ${size}`">
     <slot name="icon-left" />
-    <span :class="{ hidden: loadingStatus == true }">
+    <span :class="{ invisible: loadingStatus == true }">
       <slot />
     </span>
-    <base-loader class="base-button__loader" v-if="loadingStatus == true" />
+    <base-loader class="base-button__loader" size="middle" v-if="loadingStatus == true" />
     <slot name="icon-right" />
   </button>
 </template>
 
 <style lang="scss">
 .base-button {
-  @apply relative flex items-center gap-2;
+  @apply relative flex items-center justify-center gap-2;
 
-  & span.hidden {
+  & span.invisible {
     @apply opacity-0;
   }
 
