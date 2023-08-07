@@ -3,13 +3,24 @@ import ApiError from './../errors/ApiError.js'
 import ProductDto from './../dtos/product-dto.js'
 
 class ProductService {
-  async getAllProducts() {
+  async getAllProducts(limit, page) {
+    page = +page || 1
+    limit = +limit || 10
+    let offset = page * limit - limit
+    const productsCount = await ProductModel.count()
+    const pages = Math.ceil(productsCount / limit)
+
+    if (page > pages) throw ApiError.badRequest('Такой страницы не существует')
     const result = await ProductModel.findMany({
-      include: {
-        labels: true
-      }
+      skip: offset,
+      take: limit,
+      include: { labels: true }
     })
-    return result
+    console.log(result)
+    return {
+      pages: Math.ceil(productsCount / limit),
+      result
+    }
   }
 
   async createProduct(requestBody) {

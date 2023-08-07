@@ -3,11 +3,13 @@ import LabelModel from '../models/label-model.js'
 import ProductModel from '../models/product-model.js'
 import ProductService from '../service/product-service.js'
 class ProductController {
-  async getAllProducts(req, res) {
+  async getAllProducts(req, res, next) {
     try {
-      const result = await ProductService.getAllProducts()
+      const { page, limit } = req.query
+      const result = await ProductService.getAllProducts(limit, page)
       res.send(result)
     } catch (error) {
+      console.log(error)
       next(error)
     }
   }
