@@ -49,6 +49,7 @@ class ProductService {
         labels: labels != null ? { connect: [{ id: labels }] } : {}
       }
     })
+    console.log(result)
     return result
   }
 

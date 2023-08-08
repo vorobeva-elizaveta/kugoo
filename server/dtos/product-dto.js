@@ -8,6 +8,7 @@ class ProductDto {
   article_number
   views
   bought
+  cost
 
   constructor(options) {
     this.id = options.id
@@ -19,6 +20,7 @@ class ProductDto {
     this.article_number = options.article_number
     this.views = options.views
     this.bought = options.bought
+    this.cost = options.cost
   }
 }
 

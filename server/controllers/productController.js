@@ -6,6 +6,7 @@ class ProductController {
   async getAllProducts(req, res, next) {
     try {
       const { page, limit } = req.query
+      console.log(req.query)
       const result = await ProductService.getAllProducts(limit, page)
       res.send(result)
     } catch (error) {
@@ -29,6 +30,7 @@ class ProductController {
       const result = await ProductService.updateProduct(req.body)
       res.send(result)
     } catch (error) {
+      console.log(error)
       next(error)
     }
   }

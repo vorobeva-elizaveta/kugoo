@@ -94,7 +94,6 @@ defineProps({
 
 <style lang="scss" scoped>
 .product-card {
-  max-width: 300px;
   @apply border border-gray-300 rounded-[10px] overflow-hidden;
 
   &__container {

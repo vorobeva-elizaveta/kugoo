@@ -1,13 +1,13 @@
 <script setup>
 import { MainUserLayout } from '../../layouts/index'
-import { ProductCard } from '@/features/index.js'
+import { AllProductsComponent } from '@/widgets'
 </script>
 
 <template>
   <main-user-layout>
     <div class="main-user-page">
       <div class="main-user-page__container">
-        <product-card />
+        <all-products-component />
       </div>
     </div>
   </main-user-layout>
