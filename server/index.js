@@ -6,6 +6,7 @@ import cors from 'cors'
 import ErrorHandingMiddleware from './middlewares/error-handing-middleware.js'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
+import logger from './logging.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -42,6 +43,5 @@ app.use('/api', router)
 //   res.send('Welcome To Kugoo API!')
 //   next()
 // })
-
-app.listen(PORT, () => console.log(`Server is started on port http://localhost:${PORT}`))
+app.listen(PORT, () => logger.info(`Server is started on port http://localhost:${PORT}`))
 app.use(ErrorHandingMiddleware)
