@@ -10,5 +10,6 @@ router.post('/create', ProductController.createProduct)
 router.post('/update', ProductController.updateProductById)
 router.post('/delete', ProductController.deleteProductById)
 router.post('/delete-many', ProductController.deleteManyProductsByIds)
+router.post('/search', ProductController.searchProducts)
 
 export default router

@@ -55,5 +55,15 @@ class ProductController {
       next(error)
     }
   }
+
+  async searchProducts(req, res, next) {
+    try {
+      const { searchText } = req.body
+      const result = await ProductService.searchProducts(searchText)
+      res.send(result)
+    } catch (error) {
+      next(error)
+    }
+  }
 }
 export default new ProductController()

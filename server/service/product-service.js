@@ -41,12 +41,15 @@ class ProductService {
 
   async updateProduct(requestBody) {
     const productDto = new ProductDto(requestBody),
-      { id, labels } = requestBody
+      { id, labelsIds } = requestBody
     const result = await ProductModel.update({
       where: { id },
       data: {
         ...productDto,
-        labels: labels != null ? { connect: [{ id: labels }] } : {}
+        labels: labelsIds != null ? { set: labelsIds.map((el) => ({ id: el })) } : {}
+      },
+      include: {
+        labels: true
       }
     })
     console.log(result)
@@ -63,6 +66,17 @@ class ProductService {
     for (let id of ids) {
       result.push(await ProductModel.deleteMany({ where: { id } }))
     }
+    return result
+  }
+
+  async searchProducts(searchText) {
+    const result = await ProductModel.findMany({
+      where: {
+        title: {
+          contains: searchText + ''
+        }
+      }
+    })
     return result
   }
 }

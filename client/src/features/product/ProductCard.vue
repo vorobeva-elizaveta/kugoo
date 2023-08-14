@@ -22,7 +22,7 @@ defineProps({
           title: 'Новинка',
           full_title: '',
           color: '#75D14A',
-          id: 123
+          id: 124
         }
       ]
     })
