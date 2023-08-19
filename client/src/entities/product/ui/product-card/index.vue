@@ -1,5 +1,7 @@
 <script setup>
-import { ProductImagesSlider } from './index'
+import './styles.model.scss'
+import { SmallSlider as ProductImagesSlider } from '@/shared/ui-kit'
+
 defineProps({
   product: {
     type: Object,
@@ -84,69 +86,15 @@ defineProps({
           </div>
         </div>
         <div class="product-card__price-block">
-          <p class="product-card__price-value">{{ product.cost?.toLocaleString() }} ₽</p>
+          <p class="product-card__price-value" v-if="product.cost">
+            {{ product.cost?.toLocaleString() }} ₽
+          </p>
+          <p class="product-card__price-value" v-else>Цена не указана</p>
         </div>
-        <base-button>Купить в 1 клик</base-button>
+        <slot name="send-button" />
       </div>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.product-card {
-  @apply border border-gray-300 rounded-[10px] overflow-hidden;
-
-  &__container {
-    @apply flex flex-col gap-y-5;
-  }
-
-  &__top-block {
-    position: relative;
-    width: 100%;
-    height: 230px;
-    overflow: hidden;
-  }
-
-  &__labels-block {
-    @apply absolute z-[1] top-[10px] left-[10px] flex items-center gap-2;
-  }
-  &__label {
-    @apply block py-1 px-2 rounded-[5px] text-sm
-     text-white font-medium;
-  }
-
-  &__cover-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &__bottom-block {
-    @apply flex flex-col px-6 pb-5 gap-5;
-  }
-
-  &__title {
-    @apply text-[18px] font-semibold text-black;
-  }
-
-  &__specifications {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 16px;
-    column-gap: 26px;
-
-    .specifications__item {
-      @apply flex items-center gap-x-2;
-      .item__icon {
-      }
-      .item__value {
-        @apply text-gray-600 text-[14px];
-      }
-    }
-  }
-
-  &__price-value {
-    @apply font-semibold text-[20px] text-black;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

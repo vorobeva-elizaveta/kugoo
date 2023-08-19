@@ -1,8 +1,9 @@
 <script setup>
-import { ProductCard } from '@/features/index.js'
-import { getAllProducts } from '@/shared/API/products.js'
 import { ref, watch } from 'vue'
-import { PaginationComponent } from '@/features/index'
+import { ProductCard } from '../../entities/product'
+import { getAllProducts } from '../../entities/product'
+import { BasePagination as PaginationComponent } from '../../shared/ui-kit/index'
+import './styles.model.scss'
 
 let products = ref(),
   pagesCount = ref(1),
@@ -44,24 +45,3 @@ onLoadComponent()
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.all-products-component {
-  &__container {
-  }
-
-  &__products-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
-
-  &__product-card {
-    width: 100%;
-  }
-
-  &__pagination-block {
-    @apply mt-4;
-  }
-}
-</style>

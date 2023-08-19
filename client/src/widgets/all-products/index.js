@@ -1,3 +1,3 @@
-import AllProductsComponent from './AllProductsComponent.vue'
+import AllProductsComponent from './index.vue'
 
 export { AllProductsComponent }

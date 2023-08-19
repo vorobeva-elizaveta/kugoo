@@ -16,6 +16,7 @@ class LabelController {
       const result = await LabelService.createLabel(req.body)
       res.send(result)
     } catch (error) {
+      console.log(error);
       next(error)
     }
   }

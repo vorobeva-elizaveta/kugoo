@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, toRefs } from 'vue'
+import './styles.model.scss'
 
 const props = defineProps({
     marginBetween: String,
@@ -55,40 +56,4 @@ const onClickPrevButton = () => {
   </div>
 </template>
 
-<style lang="scss">
-.product-images-slider {
-  overflow: hidden;
-
-  &__buttons {
-    @apply absolute opacity-0 hover:opacity-100 z-[1] flex items-center justify-between w-full h-full px-4;
-  }
-
-  &__navigation-button {
-    @apply w-10 h-10 flex items-center justify-center rounded-full bg-white hover:bg-gray-50;
-  }
-
-  &__prev-button {
-  }
-  &__next-button {
-  }
-
-  &__slides {
-    @apply flex;
-    pointer-events: none;
-    height: 100%;
-    position: absolute;
-    transition: all 0.2s;
-
-    div {
-      width: 100%;
-      height: 100%;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-  }
-}
-</style>
+<style lang="scss"></style>

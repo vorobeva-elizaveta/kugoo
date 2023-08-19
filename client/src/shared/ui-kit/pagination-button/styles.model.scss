@@ -1,0 +1,7 @@
+.pagination-button {
+    @apply border px-2 py-1 border-purple rounded-[5px] text-purple hover:text-white bg-white hover:bg-light-purple transition-[.2s];
+  
+    &.active {
+      @apply bg-purple text-white;
+    }
+  }
